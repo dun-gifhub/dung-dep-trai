@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-serif-title {
+  font-family: 'Noto Serif', Georgia, Cambria, serif;
+}
+
+/* Subtle fade-in CSS transitions for SlideViewer content */
+.slide-content-fade {
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1), transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.slide-content-fade.fade-enter {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.slide-content-fade.fade-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered CSS transitions for internal content elements of each slide */
+.slide-content-fade.fade-enter > * > * {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.slide-content-fade.fade-active > * > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 320ms cubic-bezier(0.16, 1, 0.3, 1), transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Graceful cascading delays for slide content sub-components (Header, Body cards, Footer/Mini-quiz) */
+.slide-content-fade.fade-active > * > *:nth-child(1) {
+  transition-delay: 20ms;
+}
+
+.slide-content-fade.fade-active > * > *:nth-child(2) {
+  transition-delay: 60ms;
+}
+
+.slide-content-fade.fade-active > * > *:nth-child(3) {
+  transition-delay: 100ms;
+}
+
+.slide-content-fade.fade-active > * > *:nth-child(4) {
+  transition-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-content-fade,
+  .slide-content-fade > * > * {
+    transition: opacity 150ms ease-out !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  button,
+  .print-hide {
+    display: none !important;
+  }
+
+  body {
+    background-color: white !important;
+    padding: 0 !important;
+  }
+
+  #presentation-slide-canvas {
+    border: none !important;
+    box-shadow: none !important;
+    width: 100vw !important;
+    height: 56.25vw !important;
+    page-break-after: always;
+  }
+}

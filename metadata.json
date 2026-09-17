@@ -1,0 +1,6 @@
+{
+  "name": "Tìm Hiểu Tác Phẩm Xuân Yến - Đỗ Cận",
+  "description": "Bài thuyết trình PowerPoint Ngữ văn chuyên sâu về tác phẩm Xuân Yến của danh nhân văn hóa Đỗ Cận (Thái Nguyên).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
